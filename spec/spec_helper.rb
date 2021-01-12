@@ -21,6 +21,7 @@ RSpec.configure do |config|
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'shoulda/matchers'
+  require './spec/support/factory_bot.rb'
   require 'capybara/rspec'
 
   Shoulda::Matchers.configure do |config|

@@ -5,14 +5,14 @@ export const signup = (user) =>
     data: user
   })
 
-export const signin = (user) => 
+export const login = (user) => 
   $.ajax({
     type: 'POST',
     url: '/api/sessions',
     data: user
   })
 
-export const signout = () => 
+export const logout = () => 
   $.ajax({
     type: 'DELETE',
     url: '/api/sessions'

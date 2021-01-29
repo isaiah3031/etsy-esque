@@ -10,6 +10,6 @@
     "heroku-postbuild": "yarn build && yarn deploy"
   },
   "dependencies": {
-    "webpack": "4.44.2"
+    "webpack": "5.18.0"
   }
 }

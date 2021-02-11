@@ -1,16 +1,15 @@
 import React, {useEffect} from 'react'
 import { withRouter } from 'react-router-dom'
-import ProductReviewContainer from '../reviews/product_review'
+import ProductReviewContainer from '../reviews/product_review_container'
 
 const ProductDisplay = ({ fetchProduct, products, match }) => {
-  const productId = parseInt(match.params.productId)
+  const productId = parseInt(match.params.product_id)
   useEffect(() => {
     products[productId] || fetchProduct(productId)
   }, []);
   
   try {
     const product = products[productId]
-    
     return (
       <>
         <div>

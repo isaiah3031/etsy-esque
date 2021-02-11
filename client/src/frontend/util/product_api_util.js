@@ -34,7 +34,7 @@ export const fetchReviews = (productId) =>
     "url": `https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/reviews?tcin=${productId}&limit=100&offset=0`,
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "aa3a6f134dmshf42b60c8bcee96ep1ef782jsn78b48b995001",
+      "x-rapidapi-key": REACT_APP_API_KEY,
       "x-rapidapi-host": "target-com-store-product-reviews-locations-data.p.rapidapi.com"
     }
   })

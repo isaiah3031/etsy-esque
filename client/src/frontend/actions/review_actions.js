@@ -6,7 +6,7 @@ const receiveReviews = reviews => ({
   reviews
 })
 
-export const fetchReviews = productId => dispatch => {
-  debugger
-  return ProductApiUtil.fetchReviews(productId).then(result => dispatch(receiveReviews(result.reviews)))
-  }
+export const fetchReviews = productId => dispatch => 
+  ProductApiUtil.fetchReviews(productId).then(result => 
+    dispatch(receiveReviews(result.reviews)))
+  

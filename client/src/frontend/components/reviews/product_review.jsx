@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react'
 
 const ProductReview = ({fetchReviews, reviews, productId}) => {
-  // debugger
-  // useEffect(() => {
-  //   debugger
-  //   fetchReviews(productId)
-  // }, [])
+  useEffect(() => {
+    fetchReviews(productId)
+  }, [])
   
-  // try {
-  //     return (
-  //   reviews.map(review => <p>{review}</p>)
-  // )
-  // } catch (error) {
-  //   return null
-  // }
-  return <p>REVIEWS</p>
+  try {
+    debugger
+    return (
+      reviews[productId].map(review => <p>{review.ReviewText}</p>)
+    )
+  } catch (error) {
+    return null
+  }
 }
 
 export default ProductReview

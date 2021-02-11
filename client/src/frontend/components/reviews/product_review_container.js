@@ -3,7 +3,7 @@ import { fetchReviews } from '../../actions/review_actions'
 import ProductReview from './product_review'
 
 const mapStateToProps = (state, ownProps) => ({
-  reviews: state.reviews,
+  reviews: state.entities.reviews,
   productId: ownProps.productId
 })
 

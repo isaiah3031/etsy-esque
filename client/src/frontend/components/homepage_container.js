@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchProducts } from '../actions/product_actions'
+import { fetchProductsByKeyword } from '../actions/product_actions'
 import Homepage from './homepage'
 
 const mapStateToProps = state => ({
@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchProducts: () => dispatch(fetchProducts())
+  fetchProductsByKeyword: (keyword) => dispatch(fetchProductsByKeyword(keyword))
 })
 
 const HomepageContainer = connect(

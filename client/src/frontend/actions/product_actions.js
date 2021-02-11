@@ -11,5 +11,11 @@ const receiveProducts = products => ({
   products
 })
 
-export const fetchProducts = () => dispatch => 
-  ProductApiUtil.fetchProducts().then(products => dispatch(receiveProducts(products.results)))
+export const fetchProductsByKeyword = (keyword) => dispatch => 
+  ProductApiUtil.fetchProductsByKeyword(keyword).then(result => 
+    dispatch(receiveProducts(result.products)))
+
+export const fetchProduct = (productId) => dispatch =>
+  ProductApiUtil.fetchProduct(productId).then(result =>
+    dispatch(receiveProduct(result.product)))
+

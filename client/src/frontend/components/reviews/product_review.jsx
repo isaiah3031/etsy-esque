@@ -6,7 +6,6 @@ const ProductReview = ({fetchReviews, reviews, productId}) => {
   }, [])
   
   try {
-    debugger
     return (
       reviews[productId].map(review => <p>{review.ReviewText}</p>)
     )

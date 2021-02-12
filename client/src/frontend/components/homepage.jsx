@@ -2,12 +2,13 @@ import { render } from '@testing-library/react'
 import React, {useEffect} from 'react'
 import {withRouter} from 'react-router-dom'
 import { fetchProductsByKeyword } from '../util/product_api_util'
-import SmallProductDisplay from './products/small_product_display'
+import SmallProductDisplayContainer from './products/small_product_display_container'
 import { categories } from '../constants/categories.js'
 
 const Homepage = ({fetchProductsByKeyword, products, history}, props) => {
   useEffect(() => {
-    Object.keys(categories).map(category => fetchProductsByKeyword(category))
+    // Object.keys(categories).map(category => fetchProductsByKeyword(category))
+    fetchProductsByKeyword('shoe')
   }, [])
   
   const handleClick = (e) => {
@@ -16,7 +17,7 @@ const Homepage = ({fetchProductsByKeyword, products, history}, props) => {
 
   return (
     Object.values(products).map(product => 
-      <SmallProductDisplay product={product} />
+      <SmallProductDisplayContainer product={product} />
     )
   )
 }

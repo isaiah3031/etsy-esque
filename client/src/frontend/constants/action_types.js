@@ -12,11 +12,10 @@ export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT'
 
 // // review types
 export const RECEIVE_REVIEWS = 'RECEIVE_REVIEWS'
-// export const RECEIVE_STORY = 'RECEIVE_STORY'
 
 // // Comment types
-// export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
-// export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 
 // Loading types
 export const START_LOADING = 'START_LOADING'

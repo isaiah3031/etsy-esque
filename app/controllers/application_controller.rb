@@ -2,9 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :logout, :login, :logged_in?
 
-  def fallback_index_html
-    render :file => 'public/index.html'
-  end
+  # I am not sure where this came from but 
+  # def fallback_index_html
+  #   render :file => 'public/index.html'
+  # end
 
   def current_user 
     @current_user ||= User.find_by(session_token: session[:session_token])

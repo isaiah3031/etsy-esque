@@ -1,14 +1,12 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
-  has_many :comments, foreign_key: :author_id, class_name: :Comment
-  has_many :assigned_stories, foreign_key: :assigned_to, class_name: :Story
-  has_many :stories, foreign_key: :author_id, class_name: :Story
+  has_one :cart,
+    foreign_key: 'owner_id'
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token
-
   attr_reader :password
 
   def password=(password)

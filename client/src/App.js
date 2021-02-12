@@ -5,6 +5,8 @@ import configureStore from './frontend/store/store'
 
 function App() {
   const store = configureStore()
+  window.store = store.getState()
+  window.dispatch = store.dispatch
   return (
     <div className="App">
       <Root store={store}/>

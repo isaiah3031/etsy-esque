@@ -1,3 +1,3 @@
 json.ordered cart.ordered
-json.content cart.content
+json.contents cart.contents
 json.owner_id cart.owner_id

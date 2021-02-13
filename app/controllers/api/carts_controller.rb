@@ -1,21 +1,15 @@
 class Api::CartsController < ApplicationController
   def edit
-    if (logged_in?)
-      Cart.create!(owner_id: current_user.id) if (!current_user.cart)
-      current_user.cart.update(carts_params)
-    end
+    user = User.find(params[:user_id])
+    Cart.create!(owner_id: user.id) if (Cart.find_by(owner_id: user.id))
+    user.cart.update(carts_params)
   end
 
   def show
-    debugger
-    if (logged_in?)
-      Cart.create!(owner_id: current_user.id) if (!current_user.cart)
-      debugger
-      @cart = current_user.cart
-      render 'show'
-    else
-      render json: { error: 'Invalid username or password'}
-    end
+    user = User.find(params[:user_id])
+    Cart.create!(owner_id: user.id, contents: [], ordered: false) if !(Cart.find_by(owner_id: user.id))
+    @cart = user.cart
+    render 'show'
   end
 
   private

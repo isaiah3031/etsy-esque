@@ -6,7 +6,7 @@ export const fetchProductsByKeyword = (keyword) => {
   return $.ajax({
     "async": true,
     "crossDomain": true,
-    "url": "https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?store_id=3991&keyword=lamp%20tv&sponsored=1&limit=50&offset=0",
+    "url": `https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?store_id=3991&keyword=${keyword}&sponsored=1&limit=50&offset=0`,
     "method": "GET",
     "headers": {
       "x-rapidapi-key": REACT_APP_API_KEY,

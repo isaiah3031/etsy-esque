@@ -5,15 +5,15 @@ import { fetchProductsByKeyword } from '../util/product_api_util'
 import SmallProductDisplayContainer from './products/small_product_display_container'
 import { categories } from '../constants/categories.js'
 
-const Homepage = ({fetchProductsByKeyword, products, history}, props) => {
+const Homepage = ({fetchProductsByKeyword, products, history, currentUser, cart, receiveCart}, props) => {
   useEffect(() => {
     // Object.keys(categories).map(category => fetchProductsByKeyword(category))
     fetchProductsByKeyword('shoe')
+    
+    if (currentUser) {
+      receiveCart(currentUser.id, cart)
+    }
   }, [])
-  
-  const handleClick = (e) => {
-    history.push(`/product/${e.target.id}`)
-  }
 
   return (
     Object.values(products).map(product => 

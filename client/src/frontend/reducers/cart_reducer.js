@@ -8,6 +8,8 @@ const CartReducer = (store={}, action) => {
       const newState = Object.assign({}, store)
       delete newState[action.itemId]
       return newState;
+    case (types.RECEIVE_CART || types.SAVE_TO_CART):
+      return Object.assign({}, store, action.cart.contents)
     default: 
       return store
   }

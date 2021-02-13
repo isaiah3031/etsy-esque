@@ -13,9 +13,11 @@ export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT'
 // // review types
 export const RECEIVE_REVIEWS = 'RECEIVE_REVIEWS'
 
-// // Comment types
+// // Cart types
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+export const SAVE_TO_CART = 'SAVE_TO_CART'
+export const RECEIVE_CART = 'RECEIVE_CART'
 
 // Loading types
 export const START_LOADING = 'START_LOADING'

@@ -1,7 +1,8 @@
 class Api::CartsController < ApplicationController
-  def edit
+  def update
     user = User.find(params[:user_id])
-    Cart.create!(owner_id: user.id) if (Cart.find_by(owner_id: user.id))
+    Cart.create!(owner_id: user.id, contents: [], ordered: false) if !(Cart.find_by(owner_id: user.id))
+    debugger
     user.cart.update(carts_params)
   end
 
@@ -15,6 +16,6 @@ class Api::CartsController < ApplicationController
   private
 
   def carts_params
-    params.require(:cart).permit(:owner_id, :ordered, :contents)
+    params.require(:cart).permit(:owner_id, :ordered, contents: [])
   end
 end

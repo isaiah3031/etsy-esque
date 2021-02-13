@@ -9,7 +9,8 @@ const CartReducer = (store={}, action) => {
       delete newState[action.itemId]
       return newState;
     case (types.RECEIVE_CART || types.SAVE_TO_CART):
-      return Object.assign({}, store, action.cart.contents)
+      debugger
+      return Object.assign({}, store, action.cart)
     default: 
       return store
   }

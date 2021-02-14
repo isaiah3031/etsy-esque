@@ -9,10 +9,6 @@ const Homepage = ({fetchProductsByKeyword, products, history, currentUser, cart,
   useEffect(() => {
     // Object.keys(categories).map(category => fetchProductsByKeyword(category))
     fetchProductsByKeyword('shoe')
-    
-    if (currentUser) {
-      receiveCart(currentUser.id, cart)
-    }
   }, [])
 
   return (

@@ -1,31 +1,17 @@
 import React, {useEffect} from 'react'
+import { saveCart } from '../../actions/cart_actions'
 
-const CartPreview = ({cart, currentUser, removeFromCart, fetchProduct, receiveCart}) => {
-  // window.fetchProduct = fetchProduct;
-  // window.removeFromCart = removeFromCart
+const CartPreview = ({ cart, currentUser, removeFromCart, fetchProduct, receiveCart, saveCart }) => {
   useEffect(() => {
-    // This allows me to just save item ID's to my rails database.
-    // If key === index the entry is wrong because they should be saved as tcins.
-    // from there, if the current item is a tcin string, use it to fetch the item and or delete the bad entry
-    // else if the entry is still wrong use it to reformat the entry as {tcin: item}
-    debugger
-    if (!!currentUser.id) {
-      receiveCart(currentUser.id, cart).then((cart) => {    
-        debugger
-        Object.keys(cart).forEach((key, index) => {
-        let item = cart[key]
-        if (isTCIN(key)) {
-          debugger
-          fetchProduct(key)
-          removeFromCart(key)
-        } else if (item === "" || item === undefined) {
-          removeFromCart(key)
-        }
-      })}
-    )}
+    if (currentUser.id) {
+      saveCart(currentUser.id, Object.keys(cart))
+    }
   }, [])
 
-  const isTCIN = (key) => (cart[key] === undefined)
+  const removeAndSave = (itemId) => {
+    removeFromCart(itemId)
+    saveCart(currentUser.id, cart)
+  }
 
   if (cart === {} || cart === undefined) return null
 
@@ -41,7 +27,7 @@ const CartPreview = ({cart, currentUser, removeFromCart, fetchProduct, receiveCa
           total += price
           return <>
             <p>{item.title || item.name}</p>
-            <input type='button' value='Remove From Cart' onClick={() => removeFromCart(itemId)} />
+            <input type='button' value='Remove From Cart' onClick={() => removeAndSave(itemId)} />
           </>
         }
       )}

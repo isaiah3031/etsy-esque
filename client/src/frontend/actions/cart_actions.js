@@ -27,35 +27,28 @@ export const addToCart = item => dispatch =>
 export const removeFromCart = itemId => dispatch =>
   dispatch(removeFromCartAction(itemId))
 
-export const saveCart = (userId, cart) => dispatch =>{
-  
-  return CartAPIUtil.saveUserCart(userId, cart).then(cart => dispatch(saveCartAction(cart)))
-}
-
-export const receiveCart = (userId, unsavedCart) => dispatch => {
-  return CartAPIUtil.fetchUserCart(userId).then(cart => {
-    // Check if unsaved(STATE) cart has any items that are missing from the saved(RAILS) cart
-    // if so, adds the item the the saved cart 
-    let usersCart = [...cart.contents]
-    Object.keys(unsavedCart).forEach(tcin => {
-      if (!usersCart.includes(tcin)) {
-        usersCart.push(tcin)
-      }
-    })
-    
-    // Check if saved(RAILS) cart has any items that are missing from the unsaved(STATE) cart
-    // if so, adds tcin as key with undefined items
-    usersCart.forEach(tcin => {
-      if (!Object.keys(unsavedCart).includes(tcin)) {
-        unsavedCart[tcin] = undefined
-      }
-    })
+export const saveCart = (userId, cart) => dispatch =>
+  CartAPIUtil.saveUserCart(userId, cart).then(cart => {
     debugger
-    return dispatch(receiveCartAction(unsavedCart))
-  }).then(action => {
-    return saveCart(userId, Object.keys(action.cart))()
+    return dispatch(saveCartAction(cart))
   })
-}
+
+
+export const receiveCart = (userId, existingCart) => dispatch => 
+  // Fetch a users previously saved cart from the rails database
+  // **Cart is received as { cart: { ordered: false, contents: ['TCIN1','TCIN2'], ownerId: X } }
+  CartAPIUtil.fetchUserCart(userId).then(cart => {
+    
+    // Iterate through cart contents. If the current TCIN is missing from the keys
+    // of the existing cart object, add it with the child value "unloaded"
+    cart.contents.forEach(tcin => {
+      if (!existingCart[tcin]) {
+        existingCart[tcin] = 'unloaded'
+      }
+    })
+    dispatch(receiveCartAction(existingCart))
+  })
+
 
 // handleexistingCart aka merge existing cart into previously saved user cart
 // Take userId and cart as params

@@ -2,13 +2,13 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import CartPreviewContainer from '../cart/cart_preview_container'
 
-const Greeting = (props) => {
-  if (props.currentUser.username !== undefined){
+const Greeting = ({currentUser, logout, saveUserCart}) => {
+  if (currentUser.username !== undefined){
     return (
       <div className='greeting-container'>
         <Link className='icon' to='/'>BugTracker</Link>
-        <h1>Welcome {props.currentUser.username}
-          <button onClick={() => props.logout()}>Logout</button>          
+        <h1>Welcome {currentUser.username}
+          <button onClick={() => logout()}>Logout</button>          
         </h1>
         <CartPreviewContainer />
       </div>

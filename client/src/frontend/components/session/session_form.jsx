@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { receiveCart } from '../../actions/cart_actions'
 
 class SessionForm extends React.Component{
   constructor(props){
@@ -27,7 +28,9 @@ class SessionForm extends React.Component{
   }
 
   handleSubmit() {
-    this.props.processForm({user: this.state})
+    this.props.processForm({user: this.state}).then(action =>{
+      this.props.receiveCart(action.user.id)
+    })
     this.setState({
       username: '',
       password: ''

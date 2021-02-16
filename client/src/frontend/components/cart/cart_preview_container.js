@@ -6,6 +6,7 @@ import CartPreview from './cart_preview'
 const mapStateToProps = state => ({
   cart: state.entities.cart,
   currentUser: state.session,
+  products: state.entities.products
 })
 
 const mapDispatchToProps = dispatch => ({

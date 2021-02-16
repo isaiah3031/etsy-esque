@@ -21,32 +21,31 @@ const saveCartAction = cart => ({
   cart
 })
 
-export const addToCart = item => dispatch => 
-  dispatch(addToCartAction(item))
-
+export const addToCart = item => dispatch => {
+  return dispatch(addToCartAction(item))
+}
 export const removeFromCart = itemId => dispatch =>
   dispatch(removeFromCartAction(itemId))
 
-export const saveCart = (userId, cart) => dispatch =>
-  CartAPIUtil.saveUserCart(userId, cart).then(cart => {
-    debugger
-    return dispatch(saveCartAction(cart))
+export const saveCart = (userId, cart) => dispatch => {
+  return CartAPIUtil.saveUserCart(userId, Object.keys(cart)).then(cart => {
+    let newCart = {}
+    cart.contents.forEach(item => newCart[item] = newCart[item] ? newCart[item] += 1 : 1)
+    return dispatch(saveCartAction(newCart))
   })
+}
 
 
 export const receiveCart = (userId, existingCart) => dispatch => 
   // Fetch a users previously saved cart from the rails database
   // **Cart is received as { cart: { ordered: false, contents: ['TCIN1','TCIN2'], ownerId: X } }
   CartAPIUtil.fetchUserCart(userId).then(cart => {
-    
     // Iterate through cart contents. If the current TCIN is missing from the keys
     // of the existing cart object, add it with the child value "unloaded"
-    cart.contents.forEach(tcin => {
-      if (!existingCart[tcin]) {
-        existingCart[tcin] = 'unloaded'
-      }
-    })
-    dispatch(receiveCartAction(existingCart))
+    existingCart = [...Object.values(existingCart), ...cart.contents]
+    const formattedCart = {}
+    existingCart.forEach(item => formattedCart[item] = formattedCart[item] ? formattedCart[item] += 1 : 1)
+    dispatch(receiveCartAction(formattedCart))
   })
 
 

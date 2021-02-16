@@ -7,7 +7,7 @@ export const fetchUserCart = (userId) =>
   })
 
 export const saveUserCart = (userId, cart) =>{
-  debugger
+
   return $.ajax({
     type: 'PUT',
     url: `http://localhost:3001/api/users/${userId}/carts/1`,

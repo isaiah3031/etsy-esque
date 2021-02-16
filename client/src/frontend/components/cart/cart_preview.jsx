@@ -1,18 +1,39 @@
 import React, {useEffect} from 'react'
 import { saveCart } from '../../actions/cart_actions'
 
-const CartPreview = ({ cart, currentUser, removeFromCart, fetchProduct, receiveCart, saveCart }) => {
+const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct, receiveCart, saveCart }) => {
   useEffect(() => {
     if (currentUser.id) {
-      saveCart(currentUser.id, Object.keys(cart))
+      saveCart(currentUser.id, cart)
     }
   }, [])
 
   const removeAndSave = (itemId) => {
-    removeFromCart(itemId)
-    saveCart(currentUser.id, cart)
+    new Promise(() => removeFromCart(itemId)).then(
+      () => {
+        
+        saveCart(currentUser.id, Object.keys(cart)
+      )}
+    )
   }
 
+  async function loadProduct(itemId) {
+    return fetchProduct(itemId)
+  }
+  const itemDetails = (item) => {
+    if (item === undefined || Object.values(item)[0] === "Tcin not found.") return null 
+    
+    let price = item.price.current_retail || item.price.current_retail_max
+    total += price
+    return <>
+      <p>{item.title || item.name}</p>
+      <input 
+        type='button' 
+        value='Remove From Cart' 
+        onClick={() => removeAndSave(item.tcin)}
+      />
+    </>
+  }
   if (cart === {} || cart === undefined) return null
 
   let total = 0;
@@ -21,14 +42,16 @@ const CartPreview = ({ cart, currentUser, removeFromCart, fetchProduct, receiveC
     <>
       {
         Object.keys(cart).map(itemId => {
-          const item = cart[itemId]
-          if (typeof item === 'string') return
-          let price = item.price.current_retail || item.price.current_retail_max
-          total += price
-          return <>
-            <p>{item.title || item.name}</p>
-            <input type='button' value='Remove From Cart' onClick={() => removeAndSave(itemId)} />
-          </>
+          const item = products[itemId]
+          if (!item) {
+            loadProduct(itemId).then(() => {
+              
+              return itemDetails(products[itemId]
+            )})
+            
+          } else {
+            return itemDetails(item)
+          }
         }
       )}
       <p>{total}</p>

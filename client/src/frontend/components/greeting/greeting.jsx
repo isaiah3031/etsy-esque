@@ -10,7 +10,6 @@ const Greeting = ({currentUser, logout, saveUserCart}) => {
         <h1>Welcome {currentUser.username}
           <button onClick={() => logout()}>Logout</button>          
         </h1>
-        <CartPreviewContainer />
       </div>
     )
   } else {
@@ -25,7 +24,6 @@ const Greeting = ({currentUser, logout, saveUserCart}) => {
           <button>Login</button>
         </Link>
       </div>
-      <CartPreviewContainer />
     </div>
   )}
 }

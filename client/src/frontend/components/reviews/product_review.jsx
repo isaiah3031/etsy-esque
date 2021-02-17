@@ -4,7 +4,7 @@ const ProductReview = ({fetchReviews, reviews, productId}) => {
   useEffect(() => {
     fetchReviews(productId)
   }, [])
-  
+
   try {
     return (
       reviews[productId].map(review => <p>{review.ReviewText}</p>)

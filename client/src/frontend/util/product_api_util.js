@@ -6,11 +6,11 @@ export const fetchProductsByKeyword = (keyword) => {
   return $.ajax({
     "async": true,
     "crossDomain": true,
-    "url": `https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/search?store_id=3991&keyword=${keyword}&sponsored=1&limit=50&offset=0`,
+    "url": `https://target1.p.rapidapi.com/products/list?storeId=911&endecaId=5xtg6&pageSize=20&pageNumber=1&sortBy=relevance&searchTerm=${keyword}`,
     "method": "GET",
     "headers": {
       "x-rapidapi-key": REACT_APP_API_KEY,
-      "x-rapidapi-host": "target-com-store-product-reviews-locations-data.p.rapidapi.com"
+      "x-rapidapi-host": "target1.p.rapidapi.com"
     }
   })
 }
@@ -19,11 +19,11 @@ export const fetchProduct = (productId) =>
   $.ajax({
 	"async": true,
 	"crossDomain": true,
-	"url": `https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/details?store_id=3991&tcin=${productId}`,
+	"url": `https://target1.p.rapidapi.com/products/get-details?tcin=${productId}&store_id=911`,
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": REACT_APP_API_KEY,
-		"x-rapidapi-host": "target-com-store-product-reviews-locations-data.p.rapidapi.com"
+		"x-rapidapi-host": "target1.p.rapidapi.com"
 	}
 })
 
@@ -31,11 +31,11 @@ export const fetchReviews = (productId) =>
   $.ajax({
     "async": true,
     "crossDomain": true,
-    "url": `https://target-com-store-product-reviews-locations-data.p.rapidapi.com/product/reviews?tcin=${productId}&limit=100&offset=0`,
+    "url": `https://target1.p.rapidapi.com/reviews/list?tcin=${productId}&sort=time_desc&limit=30&offset=0`,
     "method": "GET",
     "headers": {
       "x-rapidapi-key": REACT_APP_API_KEY,
-      "x-rapidapi-host": "target-com-store-product-reviews-locations-data.p.rapidapi.com"
+      "x-rapidapi-host": "target1.p.rapidapi.com"
     }
   })
 

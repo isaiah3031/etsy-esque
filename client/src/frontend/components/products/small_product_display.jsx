@@ -22,7 +22,7 @@ const SmallProductDisplay = ({product, history, addToCart, saveCart, cart, curre
   return (
     <div className='product-display'>
       <div id={product.tcin} onClick={() => handleClick()}>
-        <img className='product-image' src={`${product.images[0].base_url}${product.images[0].primary}`}/>
+        <img className='product-image' src={`${product.images.displayUri}`}/>
         <div className='product-info'>
           <h2>{product.price.formatted_current_price}</h2>
           <h2>{product.title}</h2>

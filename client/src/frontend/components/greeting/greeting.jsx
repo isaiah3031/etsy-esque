@@ -2,15 +2,18 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import CartPreviewContainer from '../cart/cart_preview_container'
 import '../../../stylesheets/header-container.scss'
+import Cart from '../../../images/store-cart.png'
+import User from '../../../images/store-user.png'
+import Store from '../../../images/store-store.png'
 
 const Greeting = ({currentUser, logout, saveUserCart}) => {
   const loggedInUser = () => 
-    <h1>Welcome {currentUser.username}
+    <h1 className='user-options'>Welcome {currentUser.username}
       <button onClick={() => logout()}>Logout</button>          
     </h1>
 
   const guestUser = () =>
-    <div>
+    <div className='user-options'>
       <Link to='/signup'>
         <button>Sign up</button>
       </Link>
@@ -31,7 +34,7 @@ const Greeting = ({currentUser, logout, saveUserCart}) => {
       <div className='header-container'>
         <section className='header-1'>
           <div className='home'>
-            <Link className='icon' to='/'>BugTracker</Link> 
+            <Link to='/'><img src={Store}/></Link> 
           </div>
           <div>
             <label id='search-bar'>SEARCH</label>
@@ -41,7 +44,14 @@ const Greeting = ({currentUser, logout, saveUserCart}) => {
           <div>
             {categories()}
           </div>
-          {currentUser.id ? loggedInUser() : guestUser()}
+          <section>
+            <div className='icon user-icon'>
+              <img src={User}/>
+              {currentUser.id ? loggedInUser() : guestUser()}
+            </div>
+            <CartPreviewContainer/>
+          </section>
+          
         </section>
       </div>
     )

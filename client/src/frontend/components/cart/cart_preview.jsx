@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react'
 import { saveCart } from '../../actions/cart_actions'
+import Cart from '../../../images/store-cart.png'
+import '../../../stylesheets/header-container.scss'
 
 const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct, receiveCart, saveCart }) => {
   useEffect(() => {
@@ -40,23 +42,25 @@ const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct
   let total = 0;
 
   return (
-    <>
-      {
-        Object.keys(cart).map(itemId => {
-          const item = products[itemId]
-          if (!item) {
-            loadProduct(itemId).then(() => {
+    <div className='icon cart-icon'>
+      <img src={Cart} />
+      <div className='cart-preview'>
+        {
+          Object.keys(cart).map(itemId => {
+            const item = products[itemId]
+            if (!item) {
+              loadProduct(itemId).then(() => {
+                return itemDetails(products[itemId]
+              )})
               
-              return itemDetails(products[itemId]
-            )})
-            
-          } else {
-            return itemDetails(item)
+            } else {
+              return itemDetails(item)
+            }
           }
-        }
-      )}
-      <p>{total}</p>
-    </>
+        )}
+        <p>{total}</p>
+      </div>
+    </div>
   )
 }
 

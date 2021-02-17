@@ -3,7 +3,7 @@ import React, {useEffect} from 'react'
 import {withRouter} from 'react-router-dom'
 import { fetchProductsByKeyword } from '../util/product_api_util'
 import SmallProductDisplayContainer from './products/small_product_display_container'
-import { categories } from '../constants/categories.js'
+import '../../stylesheets/vertical-lists.scss'
 
 const Homepage = ({fetchProductsByKeyword, products, history, currentUser, cart, receiveCart}, props) => {
   useEffect(() => {
@@ -12,9 +12,11 @@ const Homepage = ({fetchProductsByKeyword, products, history, currentUser, cart,
   }, [])
 
   return (
-    Object.values(products).map(product => 
-      <SmallProductDisplayContainer product={product} />
-    )
+    <div className='vertical-lists'>
+      {Object.values(products).map(product => 
+        <SmallProductDisplayContainer product={product} />
+      )}
+    </div>
   )
 }
 

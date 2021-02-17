@@ -9,11 +9,12 @@ const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct
   }, [])
 
   const removeAndSave = (itemId) => {
-    new Promise(() => removeFromCart(itemId)).then(
-      () => {
-        
-        saveCart(currentUser.id, Object.keys(cart)
-      )}
+    let removePromise = new Promise((resolve) => resolve(removeFromCart(itemId)))
+    
+    removePromise.then((action) => {
+        let newCart = Object.keys(cart).filter(item => item != action.itemId)
+        saveCart(currentUser.id, newCart)      
+      }
     )
   }
 

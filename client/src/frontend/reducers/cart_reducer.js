@@ -5,8 +5,8 @@ const CartReducer = (store={}, action) => {
     case (types.ADD_TO_CART):
       return Object.assign({}, store, {[action.item]: 1})
     case (types.REMOVE_FROM_CART):
-      const newState = Object.assign({}, store)
-      delete newState[action.itemId]
+      let newState = Object.assign({}, store)
+      Object.keys(newState).length <= 1 ? newState = [] : delete newState[action.itemId]
       return newState;
     case (types.RECEIVE_CART):
       return Object.assign({}, store, action.cart)

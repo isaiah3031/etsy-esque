@@ -27,10 +27,11 @@ export const addToCart = item => dispatch => {
 export const removeFromCart = itemId => dispatch =>
   dispatch(removeFromCartAction(itemId))
 
-export const saveCart = (userId, cart) => dispatch => {
-  return CartAPIUtil.saveUserCart(userId, Object.keys(cart)).then(cart => {
+export const saveCart = (userId, existingCart) => dispatch => {
+  return CartAPIUtil.saveUserCart(userId, (existingCart)).then(cart => {
     let newCart = {}
     cart.contents.forEach(item => newCart[item] = newCart[item] ? newCart[item] += 1 : 1)
+    if (Object.keys(existingCart).length == 0) newCart = {}
     return dispatch(saveCartAction(newCart))
   })
 }

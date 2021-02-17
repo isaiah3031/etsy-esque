@@ -1,5 +1,6 @@
 import { withRouter } from 'react-router-dom'
 import { addToCart } from '../../actions/cart_actions'
+import '../../../stylesheets/product-display.scss'
 
 const SmallProductDisplay = ({product, history, addToCart, saveCart, cart, currentUser}) => {
   if (Object.values(product)[0] == ["Tcin not found."]) return null
@@ -9,24 +10,26 @@ const SmallProductDisplay = ({product, history, addToCart, saveCart, cart, curre
   }
     
   const addAndSave = (itemId) => {
-    new Promise(() => addToCart(itemId)).then(
-      () => {
-        if (currentUser.id) saveCart(currentUser.id, Object.keys(cart))
+    let addPromise = new Promise((resolve) => resolve(addToCart(itemId)))
+    
+    addPromise.then((action) => {
+        let newCart = [...Object.keys(cart), action.item]
+        saveCart(currentUser.id, newCart)      
       }
     )
   }
 
   return (
-    <>
+    <div className='product-display'>
       <div id={product.tcin} onClick={() => handleClick()}>
-        <img src={`${product.images[0].base_url}${product.images[0].primary}`} a/>
-        <div>
-          <label>{product.title}</label>
-          <label>{product.price.formatted_current_price}</label>
+        <img className='product-image' src={`${product.images[0].base_url}${product.images[0].primary}`}/>
+        <div className='product-info'>
+          <h2>{product.price.formatted_current_price}</h2>
+          <h2>{product.title}</h2>
         </div>
       </div>
-      <input type='button' value='Add Cart' onClick={() => addAndSave(product.tcin)} />
-    </>
+      <input className="plus-button" type='button' value='+' onClick={() => addAndSave(product.tcin)} />
+    </div>
   )
 }
 

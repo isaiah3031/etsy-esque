@@ -1,0 +1,19 @@
+#search-dropdown {
+  position: absolute;
+  width: 33vw;
+  background-color: white;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  border: thin solid #cfcfcf;
+  li {
+    width: 96%;
+    background-color: white;
+    padding: 5px 10px;
+    margin: none;
+  }
+  li:hover {
+    background-color: #cfcfcf;
+  }
+}

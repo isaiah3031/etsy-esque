@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import DisplaySearchTerms from './display_search_terms'
 
 class Search extends React.Component {
@@ -32,16 +33,26 @@ class Search extends React.Component {
     </ul>
   }
 
+  handleSubmit() {
+    
+    let formattedKeywords = this.state.input.split(' ').join('%20')
+    this.props.history.push(`/search/${formattedKeywords}`)
+    this.props.history.go()
+  }
+
   render() {
     return (
       <>
-        <input 
-          type='text' 
-          id='search-bar'
-          onChange={e => this.handleChanges(e)} 
-          placeholder="Search"
-          value={this.state.input}
-          />
+        <form onSubmit={() => this.handleSubmit()}>
+          <input 
+            type='text' 
+            id='search-bar'
+            onChange={e => this.handleChanges(e)} 
+            placeholder="Search"
+            value={this.state.input}
+            />
+            <button>Submit</button>
+          </form>
           <DisplaySearchTerms 
             results={this.props.searchTerms} 
             input={this.state.input}
@@ -51,4 +62,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search
+export default withRouter(Search)

@@ -8,6 +8,7 @@ const DisplaySearchTerms = ({results, input, history}) => {
   const handleClick = (e) => {
     let formattedSearchTerms = e.target.textContent.split(' ').join('%20')
     history.push(`/search/${formattedSearchTerms}`)  
+    history.go()
   }
 
   try {

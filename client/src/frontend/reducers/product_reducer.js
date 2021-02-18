@@ -4,6 +4,7 @@ const ProductReducer = (state={}, action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       let productObject = {}
+      
       action.products.map(product => productObject[product.tcin] = product )
       return Object.assign({}, state, productObject)
     case RECEIVE_PRODUCT: 

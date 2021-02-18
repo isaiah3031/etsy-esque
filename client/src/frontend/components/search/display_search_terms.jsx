@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import '../../../stylesheets/search-dropdown.scss'
 
 const DisplaySearchTerms = ({results, input, history}) => {
   if (input == '') return null 
@@ -11,7 +12,7 @@ const DisplaySearchTerms = ({results, input, history}) => {
 
   try {
     return (
-      <ul id='search-results'>
+      <ul id='search-dropdown'>
         {
           results.map(suggestion => 
             <li 

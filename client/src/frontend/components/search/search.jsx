@@ -37,8 +37,9 @@ class Search extends React.Component {
       <>
         <input 
           type='text' 
-          id='search-input'
+          id='search-bar'
           onChange={e => this.handleChanges(e)} 
+          placeholder="Search"
           value={this.state.input}
           />
           <DisplaySearchTerms 

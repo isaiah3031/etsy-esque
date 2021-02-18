@@ -1,17 +1,30 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
-const SearchResults = ({results, input}) => {
+const SearchResults = ({results, input, history}) => {
   if (input == '') return null 
+  
+  const handleClick = (e) => {
+    let formattedSearchTerms = e.target.textContent.split(' ').join('%20')
+    history.push(`/search/${formattedSearchTerms}`)  
+  }
+
   try {
     return (
-      <div id='search-results'>
-        <h1>Search Results:</h1>
-        {results.map(suggestion => <li>{suggestion.label}</li>)}
-      </div>
+      <ul id='search-results'>
+        {
+          results.map(suggestion => 
+            <li 
+              onClick={(e) => handleClick(e)}
+              key={suggestion.id}>
+              {suggestion.label}
+            </li>
+          )}
+      </ul>
     )
   } catch (error) {
    return null 
   }
 }
 
-export default SearchResults
+export default withRouter(SearchResults)

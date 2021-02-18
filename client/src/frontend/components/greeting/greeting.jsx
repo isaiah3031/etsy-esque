@@ -5,6 +5,7 @@ import '../../../stylesheets/header-container.scss'
 import Cart from '../../../images/store-cart.png'
 import User from '../../../images/store-user.png'
 import Store from '../../../images/store-store.png'
+import SearchContainer from '../search/search_container'
 
 const Greeting = ({currentUser, logout, saveUserCart}) => {
   const loggedInUser = () => 
@@ -37,7 +38,7 @@ const Greeting = ({currentUser, logout, saveUserCart}) => {
             <Link to='/'><img src={Store}/></Link> 
           </div>
           <div>
-            <label id='search-bar'>SEARCH</label>
+            <SearchContainer />
           </div>
         </section>
         <section className='header-2'>

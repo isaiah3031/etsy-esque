@@ -19,5 +19,8 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const SAVE_TO_CART = 'SAVE_TO_CART'
 export const RECEIVE_CART = 'RECEIVE_CART'
 
+// Search types
+export const RECEIVE_SEARCH_TERMS = 'RECEIVE_SEARCH_TERMS'
+
 // Loading types
 export const START_LOADING = 'START_LOADING'

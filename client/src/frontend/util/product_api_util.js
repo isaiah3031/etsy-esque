@@ -1,6 +1,20 @@
 import $ from 'jquery'
 const { REACT_APP_API_KEY } = process.env
 
+export const fetchSearchSuggestions = (keyword) => {
+  keyword = keyword.split(' ').join('%20')
+  
+  return $.ajax({
+    "async": true,
+    "crossDomain": true,
+    "url": `https://target1.p.rapidapi.com/auto-complete?q=${keyword}`,
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-key": "aa3a6f134dmshf42b60c8bcee96ep1ef782jsn78b48b995001",
+      "x-rapidapi-host": "target1.p.rapidapi.com"
+    }
+  })
+}
 export const fetchProductsByKeyword = (keyword) => {
   keyword = keyword.split(' ').join('%20')
   return $.ajax({

@@ -34,10 +34,13 @@ class Search extends React.Component {
   }
 
   handleSubmit() {
-    
+    const { history } = this.props
     let formattedKeywords = this.state.input.split(' ').join('%20')
-    this.props.history.push(`/search/${formattedKeywords}`)
-    this.props.history.go()
+    history.push(`/search/${formattedKeywords}`)
+    setTimeout((history) => {
+      this.props.history.go()
+    }, 50);
+    
   }
 
   render() {

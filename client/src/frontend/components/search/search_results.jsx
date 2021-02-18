@@ -6,7 +6,6 @@ import SmallProductDisplayContainer from '../products/small_product_display_cont
 
 const SearchResults = ({results, fetchProductsByKeyword, match}) => {
   useEffect(() => {
-    debugger
     fetchProductsByKeyword(match.params.search_terms)
   }, [])
   

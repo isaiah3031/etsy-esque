@@ -7,6 +7,6 @@ const receiveReviews = reviews => ({
 })
 
 export const fetchReviews = productId => dispatch => 
-  ProductApiUtil.fetchReviews(productId).then(({result}) => 
-    dispatch(receiveReviews(result)))
-  
+  ProductApiUtil.fetchReviews(productId).then(({result}) => {
+    return dispatch(receiveReviews(result))
+  })

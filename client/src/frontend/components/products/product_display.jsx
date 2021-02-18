@@ -14,7 +14,7 @@ const ProductDisplay = ({ fetchProduct, products, match }) => {
       <>
         <div>
           <p>{product.title}</p>
-          <img src={`${product.images.displayUri}`} />
+          <img src={`${product.images.primaryUri}`} />
           <p>{product.price.formatted_current_price}</p>
         </div>
         <ProductReviewContainer productId={productId} />

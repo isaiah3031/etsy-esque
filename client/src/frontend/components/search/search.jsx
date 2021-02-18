@@ -1,5 +1,6 @@
 import React from 'react'
-import SearchResults from './search_results'
+import DisplaySearchTerms from './display_search_terms'
+
 class Search extends React.Component {
   constructor(props) {
     super(props)
@@ -40,7 +41,10 @@ class Search extends React.Component {
           onChange={e => this.handleChanges(e)} 
           value={this.state.input}
           />
-          <SearchResults results={this.props.searchTerms} input={this.state.input}/> 
+          <DisplaySearchTerms 
+            results={this.props.searchTerms} 
+            input={this.state.input}
+          /> 
       </>
     )
   }

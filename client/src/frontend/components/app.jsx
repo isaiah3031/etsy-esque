@@ -5,20 +5,20 @@ import SignupFormContainer from './session/signup_form_container'
 import LoginFormContainer from './session/login_form_container'
 import HomepageContainer from './homepage_container'
 import ProductDisplayContainer from '../components/products/product_display_container'
-import CartPreviewContainer from '../components/cart/cart_preview_container'
+import SearchResultsContainer from '../components/search/search_results_container'
 
 const App = () => {
   return (
     <div>
       <header>
         <GreetingContainer />
-        {/* <CartPreviewContainer /> */}
       </header>
       <Route path='/signup' component={SignupFormContainer} />
       <Route path='/login' component={LoginFormContainer} />
       <Switch>
         <Route exact path='/' component={HomepageContainer}/>
         <Route exact path='/product/:product_id' component={ProductDisplayContainer} />
+        <Route exact path='/search/:search_terms' component={SearchResultsContainer} />
       </Switch>
 
     </div>

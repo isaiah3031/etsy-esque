@@ -1,6 +1,6 @@
 About
 
-A SPA built with React and Redux over a rails API to display products, save user carts, and make pseudopurchases. Product details come from a restful Target.com api provided by RapidAPI.
+A SPA built with React and Redux that displays products, saves products to carts, and allows users to make pseudo-purchases. This is built over a backend rails api that uses bcrypt for user authentication. Product details come from a restful api provided by RapidAPI. 
 
 Installation
 ```

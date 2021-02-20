@@ -35,10 +35,11 @@ $ yarn install
 # Run the frontend 
 $ PORT=3000 yarn start
 ```
-Credits
-[Search Icon](iconfinder.com)
-[Cart Icon](https://www.iconfinder.com/icons/3338944/business_tools_cart_basket_shopping_cart_trolley_icon)
-[User Icon](iconfinder.com)
-[Store Logo](https://www.iconfinder.com/icons/3669215/ic_store_icon)
-This Project was bootstrapped with [Create React App](https://create-react-app.dev/)
-[Target API](https://rapidapi.com/apidojo/api/target1)
+
+* Credits
+    - [Search Icon](iconfinder.com)
+    - [Cart Icon](https://www.iconfinder.com/icons/3338944/business_tools_cart_basket_shopping_cart_trolley_icon)
+    - [User Icon](iconfinder.com)
+    - [Store Logo](https://www.iconfinder.com/icons/3669215/ic_store_icon)
+    - [Create React App](https://create-react-app.dev/)
+    - [Target API](https://rapidapi.com/apidojo/api/target1)

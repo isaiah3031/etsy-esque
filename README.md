@@ -3,8 +3,8 @@ About
 A SPA built with React and Redux over a rails API to display products, save user carts, and make pseudopurchases. Product details come from a restful target api provided by RapidAPI.
 
 Installation
-
-# Clone this repository
+```
+* Clone this repository
 $ git clone https://github.com/isaiah3031/etsy-esque
 
 # Go into the repository
@@ -34,7 +34,7 @@ $ yarn install
 
 # Run the frontend 
 $ PORT=3000 yarn start
-
+```
 Credits
 [Search Icon](iconfinder.com)
 [Cart Icon](https://www.iconfinder.com/icons/3338944/business_tools_cart_basket_shopping_cart_trolley_icon)

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import { saveCart } from '../../actions/cart_actions'
 import Cart from '../../../images/store-cart.png'
 import '../../../stylesheets/header-container.scss'
+import '../../../stylesheets/cart-dropdown.scss'
 
 const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct, receiveCart, saveCart }) => {
   useEffect(() => {
@@ -23,19 +24,29 @@ const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct
   async function loadProduct(itemId) {
     return fetchProduct(itemId)
   }
+
+  const imageUrl = (product) => {
+    if (!product.images) {
+      return product.item.enrichment.images.primary_image_url
+    } else {
+      return product.images.primaryUri
+    }
+  }
+
   const itemDetails = (item) => {
     if (item === undefined || Object.values(item)[0] === "Tcin not found.") return null 
     
     let price = item.price.current_retail || item.price.current_retail_max
     total += price
-    return <>
+    return <li className='cart-items'>
+      <img src={imageUrl(item)} />
       <p>{item.title || item.name}</p>
       <input 
         type='button' 
-        value='Remove From Cart' 
+        value='remove?' 
         onClick={() => removeAndSave(item.tcin)}
       />
-    </>
+    </li>
   }
   if (cart === {} || cart === undefined) return null
 
@@ -44,11 +55,11 @@ const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct
   return (
     <div className='icon cart-icon'>
       <img src={Cart} />
-      <div className='cart-preview'>
+      <ul className='cart-preview'>
         {
           Object.keys(cart).map(itemId => {
             const item = products[itemId]
-            if (!item) {
+            if (!item.images) {
               loadProduct(itemId).then(() => {
                 return itemDetails(products[itemId]
               )})
@@ -58,8 +69,8 @@ const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct
             }
           }
         )}
-        <p>{total}</p>
-      </div>
+        <p>{total == 0 ? "No Items in Cart :(" : total}</p>
+      </ul>
     </div>
   )
 }

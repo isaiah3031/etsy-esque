@@ -27,7 +27,42 @@ li {
 }
 
 ul,
-li {
+li,
+a {
   text-decoration: none;
   list-style-type: none;
+}
+
+button,
+input[type="input"],
+input[type="button"] {
+  min-width: fit-content;
+  border-bottom: black solid thin;
+  background-color: white;
+  padding: 3.5px 10px;
+  border-radius: 0px;
+  position: relative;
+}
+
+button:hover,
+input[type="input"]:hover,
+input[type="button"]:hover,
+li:hover {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  background-color: white;
+}
+
+::-webkit-scrollbar-track {
+  width: 10px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #818b99;
+  border: 3px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
 }

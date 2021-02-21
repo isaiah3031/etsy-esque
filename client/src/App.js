@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import Root from './frontend/components/root'
-import configureStore from './frontend/store/store' 
+import {store} from './frontend/store/store' 
 
 function App() {
-  const store = configureStore()
-  window.store = store.getState()
-  window.dispatch = store.dispatch
+  // window.getState = store.getState
+  // window.d = store.dispatch
   return (
     <div className="App">
       <Root store={store}/>

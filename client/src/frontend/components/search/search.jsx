@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import DisplaySearchTerms from './display_search_terms'
+import SearchIcon from '../../../images/store-search.png'
 
 class Search extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class Search extends React.Component {
     history.push(`/search/${formattedKeywords}`)
     setTimeout((history) => {
       this.props.history.go()
-    }, 50);
+    }, 10);
     
   }
 
@@ -54,7 +55,9 @@ class Search extends React.Component {
             placeholder="Search"
             value={this.state.input}
             />
-            <button>Submit</button>
+            <button id='search-button' style={{ 
+              backgroundImage: `url(${SearchIcon})` 
+            }}></button>
           </form>
           <DisplaySearchTerms 
             results={this.props.searchTerms} 

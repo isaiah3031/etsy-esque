@@ -1,0 +1,23 @@
+.review-container {
+  max-height: 800px;
+  overflow: auto;
+  .review {
+    margin: 0 auto;
+    width: 70%;
+    max-height: 800px;
+    overflow-y: auto;
+    h3 {
+      justify-content: space-between;
+      font-weight: 300;
+      font-size: 25px;
+    }
+  }
+}
+
+.review p:first-of-type,
+h3 {
+  text-align: left;
+}
+.review p:last-of-type {
+  text-align: right;
+}

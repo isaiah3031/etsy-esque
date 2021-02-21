@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { receiveCart } from '../../actions/cart_actions'
+import '../../../stylesheets/session-forms.scss'
 
 class SessionForm extends React.Component{
   constructor(props){
@@ -57,7 +58,7 @@ class SessionForm extends React.Component{
     return (
       <div className='session-page'>
         <div className='toggle-session'>
-          <h1>Welcome To MovieApp</h1>
+          <h1>Welcome!</h1>
           <Link to={this.handleLinkTo()}>
             <button>{this.handleLinkTo()}</button>
           </Link>

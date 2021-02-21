@@ -17,9 +17,10 @@ const App = () => {
       <Route path='/signup' component={SignupFormContainer} />
       <Route path='/login' component={LoginFormContainer} />
       <Switch>
+      <Route exact path='/cart' component={CartDetailContainer} />
         <Route exact path='/search/:search_terms' component={SearchResultsContainer} />
         <Route exact path='/product/:product_id' component={ProductDisplayContainer} />
-        <Route exact path='/cart' components={CartDetailContainer} />
+        
         <Route exact path='/' component={HomepageContainer}/>
       </Switch>
 

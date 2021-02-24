@@ -1,24 +1,45 @@
-# README
+About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A SPA built with React and Redux that displays products, saves products to carts, and allows users to make pseudo-purchases. This is built over a backend rails api that uses bcrypt for user authentication. Product details come from a restful api provided by RapidAPI. 
 
-Things you may want to cover:
+Installation
+```
+* Clone this repository
+$ git clone https://github.com/isaiah3031/etsy-esque
 
-* Ruby version
+# Go into the repository
+$ cd etsy-esque
 
-* System dependencies
+# Install dependencies
+$ yarn install
+$ bundle install
 
-* Configuration
+# Run the backend 
+$ cd /etsy-esque
+$ rails s -p 3001
 
-* Database creation
+# Open a new console(This project requires two servers)
 
-* Database initialization
+# Go into the frontend folder
+$ cd etsy-esque/client
 
-* How to run the test suite
+# Add your RapidAPI Key
+$ code .env
+// REACT_APP_API_KEY=your_api_key 
+// Example:
+// REACT_APP_GOOGLE_API_KEY=123456
 
-* Services (job queues, cache servers, search engines, etc.)
+# install frontend dependencies 
+$ yarn install
 
-* Deployment instructions
+# Run the frontend 
+$ PORT=3000 yarn start
+```
 
-* ...
+* Credits
+    - [Search Icon](iconfinder.com)
+    - [Cart Icon](https://www.iconfinder.com/icons/3338944/business_tools_cart_basket_shopping_cart_trolley_icon)
+    - [User Icon](iconfinder.com)
+    - [Store Logo](https://www.iconfinder.com/icons/3669215/ic_store_icon)
+    - [Create React App](https://create-react-app.dev/)
+    - [Target API](https://rapidapi.com/apidojo/api/target1)

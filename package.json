@@ -1,9 +1,6 @@
 {
   "name": "etsy",
-  "engines": {
-    "node": "15.6.0",
-    "yarn": "1.22.5"
-  },
+
   "scripts": {
     "build": "yarn --cwd client install && yarn --cwd client build",
     "deploy": "cp -a client/build/. public/",

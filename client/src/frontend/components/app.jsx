@@ -20,7 +20,6 @@ const App = () => {
       <Route exact path='/cart' component={CartDetailContainer} />
         <Route exact path='/search/:search_terms' component={SearchResultsContainer} />
         <Route exact path='/product/:product_id' component={ProductDisplayContainer} />
-        
         <Route exact path='/' component={HomepageContainer}/>
       </Switch>
 

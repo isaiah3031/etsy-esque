@@ -1,6 +1,6 @@
 import * as types from '../constants/action_types'
 import * as CartAPIUtil from '../util/cart_api_util'
-
+import { stopAnimation } from './cart_animation_actions'
 const addToCartAction = item => ({
   type: types.ADD_TO_CART,
   item
@@ -22,11 +22,20 @@ const saveCartAction = cart => ({
 })
 
 export const addToCart = item => dispatch => {
-  return dispatch(addToCartAction(item))
+  const result = dispatch(addToCartAction(item))
+  setTimeout(() => {
+    dispatch(stopAnimation())
+  }, 1500)
+  return result
 }
-export const removeFromCart = itemId => dispatch =>
-  dispatch(removeFromCartAction(itemId))
 
+export const removeFromCart = itemId => dispatch =>{
+  const result = dispatch(removeFromCartAction(itemId))
+  setTimeout(() => {
+    dispatch(stopAnimation())
+  }, 5000)
+  return result
+}
 export const saveCart = (userId, existingCart) => dispatch => {
   return CartAPIUtil.saveUserCart(userId, (existingCart)).then(cart => {
     let newCart = {}

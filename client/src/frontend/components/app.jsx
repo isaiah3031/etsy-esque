@@ -7,6 +7,7 @@ import HomepageContainer from './homepage_container'
 import ProductDisplayContainer from '../components/products/product_display_container'
 import SearchResultsContainer from '../components/search/search_results_container'
 import CartDetailContainer from '../components/cart/cart_detail_container'
+import CartNotificationContainer from '../components/notifications/cart_notification_container'
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
         <Route exact path='/product/:product_id' component={ProductDisplayContainer} />
         <Route exact path='/' component={HomepageContainer}/>
       </Switch>
-
+      <CartNotificationContainer />
     </div>
   )
 }

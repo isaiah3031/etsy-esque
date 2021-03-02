@@ -24,3 +24,4 @@ export const RECEIVE_SEARCH_TERMS = 'RECEIVE_SEARCH_TERMS'
 
 // Loading types
 export const START_LOADING = 'START_LOADING'
+export const STOP_ANIMATIONS = 'STOP_ANIMATIONS'

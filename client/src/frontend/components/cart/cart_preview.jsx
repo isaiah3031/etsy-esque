@@ -5,7 +5,7 @@ import Cart from '../../../images/store-cart.png'
 import '../../../stylesheets/header-container.scss'
 import '../../../stylesheets/cart-dropdown.scss'
 
-const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct, receiveCart, saveCart }) => {
+const CartPreview = ({ products, cart, currentUser, fetchProduct, saveCart }) => {
   useEffect(() => {
     if (currentUser.id) {
       saveCart(currentUser.id, cart)
@@ -15,19 +15,6 @@ const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct
   async function loadProduct(itemId) {
     return fetchProduct(itemId)
   }
-
-  const removeAndSave = (itemId) => {
-    let removePromise = new Promise((resolve) => resolve(removeFromCart(itemId)))
-    
-    removePromise.then((action) => {
-        let newCart = Object.keys(cart).filter(item => item != action.itemId)
-        saveCart(currentUser.id, newCart)      
-      }
-    )
-  }
-  // const itemDetails = (item) => {
-  //   if (item === undefined || Object.values(item)[0] === "Tcin not found.") return null 
-  // }
 
   if (cart === {} || cart === undefined) return null
 
@@ -43,7 +30,6 @@ const CartPreview = ({ products, cart, currentUser, removeFromCart, fetchProduct
             total += priceAsFloat(item) || 0 
             return <li className='cart-items'>
               <CartItemContainer item={item}/>
-
             </li>}
           )}
         <p>{total == 0 ? "No Items in Cart :(" : total}</p>

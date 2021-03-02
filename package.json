@@ -1,6 +1,5 @@
 {
   "name": "estore",
-  "license": "MIT",
   "engines": {
     "node": "15.6.0",
     "yarn": "1.22.5"

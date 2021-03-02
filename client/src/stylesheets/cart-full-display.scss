@@ -1,0 +1,29 @@
+.cart-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: thin black solid;
+  img {
+    height: 130px;
+  }
+  input[type="button"],
+  p {
+    margin-top: 50px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .cart-and-total {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: solid thin black;
+    width: 100%;
+    .cart-items {
+    }
+    .total {
+      margin: 10% 20% 0 20%;
+    }
+  }
+}

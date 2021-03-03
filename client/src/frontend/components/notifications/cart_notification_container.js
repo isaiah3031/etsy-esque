@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import CartNotification from './cart_notification'
 
 const mapStateToProps = (state) => ({
-  cartAnimation: state.ui.cartAnimation
+  notification: state.ui.cartAnimation
 })
 
 const CartNotificationContainer = connect(

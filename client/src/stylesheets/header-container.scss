@@ -55,6 +55,17 @@
       margin-left: 20px;
     }
 
+    #plus-icon,
+    #minus-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    .cart-icon {
+      position: relative;
+    }
     .user-options,
     .cart-preview {
       z-index: 5;

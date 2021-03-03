@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div>
       <header>
-        <GreetingContainer />
+        <GreetingContainer data-testid="greeting-container"/>
       </header>
       <Route path='/signup' component={SignupFormContainer} />
       <Route path='/login' component={LoginFormContainer} />
@@ -23,7 +23,7 @@ const App = () => {
         <Route exact path='/product/:product_id' component={ProductDisplayContainer} />
         <Route exact path='/' component={HomepageContainer}/>
       </Switch>
-      <CartNotificationContainer />
+      <CartNotificationContainer data-testid="cart-notification"/>
     </div>
   )
 }

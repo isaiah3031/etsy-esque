@@ -29,8 +29,9 @@ const Greeting = ({currentUser, logout, history}) => {
   const categories = () =>{
     const categories = ['clothes', 'furniture', 'electronics', 'plants']
     return <ul>
-      {categories.map(category => 
+      {categories.map((category, index) => 
         <li className='category'
+          key={index}
           onClick={() =>{
           history.push(`/search/${category}%20at%20target`)
           history.go()

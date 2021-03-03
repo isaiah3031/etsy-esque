@@ -1,0 +1,12 @@
+.cart-notification {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  padding: 30px 80px;
+  h2 {
+    font-weight: 300;
+  }
+}

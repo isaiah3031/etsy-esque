@@ -13,17 +13,17 @@ const App = () => {
   return (
     <div>
       <header>
-        <GreetingContainer data-testid="greeting-container"/>
+        <GreetingContainer data-testid="greeting-container" />
       </header>
       <Route path='/signup' component={SignupFormContainer} />
       <Route path='/login' component={LoginFormContainer} />
       <Switch>
-      <Route exact path='/cart' component={CartDetailContainer} />
+        <Route exact path='/cart' component={CartDetailContainer} />
         <Route exact path='/search/:search_terms' component={SearchResultsContainer} />
         <Route exact path='/product/:product_id' component={ProductDisplayContainer} />
-        <Route exact path='/' component={HomepageContainer}/>
+        <Route exact path='/' component={HomepageContainer} />
       </Switch>
-      <CartNotificationContainer data-testid="cart-notification"/>
+      <CartNotificationContainer />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import * as types from '../../constants/action_types'
 import '../../../stylesheets/cart-notification.scss'
 
-const CartNotification = ({notification}) => {
+const CartNotification = ({ notification }) => {
   const notificationText = () => {
     switch (notification) {
       case types.ADD_TO_CART:

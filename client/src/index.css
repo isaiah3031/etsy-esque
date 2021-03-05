@@ -1,6 +1,6 @@
 body {
   margin: 0 auto;
-  width: 80%;
+  width: 100vw;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -65,4 +65,8 @@ li:hover {
   border: 3px solid transparent;
   border-radius: 9px;
   background-clip: content-box;
+}
+
+.hidden {
+  display: none;
 }

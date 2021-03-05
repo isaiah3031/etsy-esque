@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import DisplaySearchTerms from './display_search_terms'
 import SearchIcon from '../../../images/store-search.png'
+import '../../../stylesheets/search-bar.scss'
 
 const Search = (props) => {
   const [input, setInput] = useState('')

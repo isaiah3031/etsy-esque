@@ -1,71 +1,58 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import DisplaySearchTerms from './display_search_terms'
 import SearchIcon from '../../../images/store-search.png'
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      input: '',
-      results: this.props.searchTerms
+const Search = (props) => {
+  const [input, setInput] = useState('')
+  const previousInput = usePrevious(input)
+
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
+  useEffect(() => {
+    if (JSON.stringify(input) !== JSON.stringify(previousInput)) {
+      props.fetchSearchSuggestions(input)
     }
+  }, [input])
+
+  const handleChange = (e) => {
+    setInput(e.target.value)
   }
 
-  componentDidUpdate(nextProps, nextState) {
-    if (JSON.stringify(this.state.input) !== JSON.stringify(nextState.input)) {
-      this.props.fetchSearchSuggestions(this.state.input)
-    }
-  }
-
-  handleChanges(e) {
-    this.setState({
-      input: e.target.value,
-      results: this.props.searchTerms
-    })
-  }
-
-
-  returnSearchSuggestions() {
-    return <ul>
-      {Object.values(this.state.results).map(item =>
-        <li>{item.label}</li>
-      )}
-    </ul>
-  }
-
-  HandleSubmit() {
+  const HandleSubmit = () => {
     const history = useHistory()
-    let formattedKeywords = this.state.input.split(' ').join('%20')
+    let formattedKeywords = input.split(' ').join('%20')
     history.push(`/search/${formattedKeywords}`)
     setTimeout(() => {
-      this.props.history.go()
+      props.history.go()
     }, 10);
-
   }
 
-  render() {
-    return (
-      <>
-        <form onSubmit={() => this.HandleSubmit()}>
-          <input
-            type='text'
-            id='search-bar'
-            onChange={e => this.handleChanges(e)}
-            placeholder="Search"
-            value={this.state.input}
-          />
-          <button id='search-button' style={{
-            backgroundImage: `url(${SearchIcon})`
-          }}></button>
-        </form>
-        <DisplaySearchTerms
-          results={this.props.searchTerms}
-          input={this.state.input}
-        />
-      </>
-    )
-  }
+  return <>
+    <form onSubmit={() => HandleSubmit()}>
+      <input
+        type='text'
+        id='search-bar'
+        onChange={handleChange}
+        placeholder="Search"
+        value={input}
+      />
+      <button id='search-button' style={{
+        backgroundImage: `url(${SearchIcon})`
+      }}></button>
+    </form>
+    <DisplaySearchTerms
+      results={props.searchTerms}
+      input={input}
+    />
+  </>
+
 }
 
 export default Search

@@ -11,7 +11,7 @@ const DisplaySearchTerms = ({ results, input }) => {
     history.push(`/search/${formattedSearchTerms}`)
     history.go()
   }
-
+  
   try {
     return (
       <ul id='search-dropdown'>

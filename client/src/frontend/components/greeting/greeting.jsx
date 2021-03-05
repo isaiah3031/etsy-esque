@@ -10,21 +10,26 @@ import SearchContainer from '../search/search_container'
 const Greeting = ({ currentUser, logout }) => {
   const history = useHistory()
   const loggedInUser = () =>
-    <h1 data-testid='user-options' 
-      className='user-options'>
-      Welcome, {currentUser.username}!
-      <button onClick={() => logout()}>Logout</button>
-    </h1>
+    <>
+      <h1 data-testid='greeting-msg'>
+        Welcome, {currentUser.username}!
+      </h1>
+      <button data-testid='user-options'
+        onClick={() => logout()}>
+        Logout
+      </button>
+    </>
 
   const guestUser = () =>
-    <div data-testid='user-options'
-      className='user-options'>
-      <h2>Welcome, Guest!</h2>
-      <section>
-        <button onClick={() => history.push('/signup')}>Sign up</button>
-        <button onClick={() => history.push('/login')}>Login</button>
-      </section>
-    </div>
+    <>
+      <h1 data-testid='greeting-msg'>
+        Welcome, Guest!
+      </h1>
+      <button data-testid='user-options'
+        onClick={() => history.push('/login')}>
+        Login
+      </button>
+    </>
 
   const categories = () => {
     const categories = ['clothes', 'furniture', 'electronics', 'plants']
@@ -48,20 +53,12 @@ const Greeting = ({ currentUser, logout }) => {
           <img src={Store} />
           <h1 className='logo'>Store</h1>
         </div>
-
-        <div>
-          <SearchContainer />
-        </div>
+        <SearchContainer />
       </section>
       <section className='header-2'>
-        <div>
-          {categories()}
-        </div>
+        {categories()}
         <section>
-          <div className='icon user-icon'>
-            <img src={User} />
-            {currentUser.id ? loggedInUser() : guestUser()}
-          </div>
+          {currentUser.id ? loggedInUser() : guestUser()}
           <CartPreviewContainer />
         </section>
       </section>

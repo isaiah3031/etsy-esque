@@ -7,6 +7,10 @@ const Search = (props) => {
   const [input, setInput] = useState('')
   const previousInput = usePrevious(input)
 
+  const handleChange = (e) => {
+    setInput(e.target.value)
+  }
+
   function usePrevious(value) {
     const ref = useRef();
     useEffect(() => {
@@ -17,14 +21,18 @@ const Search = (props) => {
 
   useEffect(() => {
     if (JSON.stringify(input) !== JSON.stringify(previousInput)) {
-      props.fetchSearchSuggestions(input)
+      try {
+        props.fetchSearchSuggestions(input)
+      } catch (error) {
+        return null
+      }
     }
   }, [input])
 
-  const handleChange = (e) => {
-    setInput(e.target.value)
-  }
 
+
+  // Running props.history.go() without the timeout function doesn't work for some 
+  // reason and I haven't been able to find a reason why.
   const HandleSubmit = () => {
     const history = useHistory()
     let formattedKeywords = input.split(' ').join('%20')
@@ -52,7 +60,6 @@ const Search = (props) => {
       input={input}
     />
   </>
-
 }
 
 export default Search

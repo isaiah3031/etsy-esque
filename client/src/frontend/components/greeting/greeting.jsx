@@ -9,6 +9,7 @@ import SearchContainer from '../search/search_container'
 
 const Greeting = ({ currentUser, logout }) => {
   const history = useHistory()
+
   const loggedInUser = () =>
     <>
       <h1 data-testid='greeting-msg'>

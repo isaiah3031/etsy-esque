@@ -44,10 +44,9 @@ const Search = (props) => {
   }
 
   return <>
-    <form onSubmit={() => HandleSubmit()}>
+    <form onSubmit={() => HandleSubmit()} id="search-bar">
       <input
         type='text'
-        id='search-bar'
         onChange={handleChange}
         placeholder="Search"
         value={input}

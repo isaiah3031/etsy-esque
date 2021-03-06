@@ -22,7 +22,6 @@ const CartPreview = ({ products, cart, currentUser, fetchProduct, saveCart }) =>
 
   return (
     <div className='icon cart-icon'>
-      <img src={Cart} />
       <ul className='cart-preview'>
         {
           Object.keys(cart).map(itemId => {

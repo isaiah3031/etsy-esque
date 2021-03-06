@@ -2,16 +2,19 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import CartPreviewContainer from '../cart/cart_preview_container'
 import '../../../stylesheets/header-container.scss'
-import Cart from '../../../images/store-cart.png'
+import User from '../../../images/store-user.png'
 import Hamburger from '../../../images/store-hamburger.png'
 import Store from '../../../images/store-store.png'
+import Cart from '../../../images/store-cart.png'
+import Search from '../../../images/store-search.png'
 import SearchContainer from '../search/search_container'
 
 const Greeting = ({ currentUser, logout }) => {
   const history = useHistory()
   const [sideMenuIsVisible, toggleSideMenu] = useState(false)
+  const [choosenIcon, setIcon] = useState('none')
   const loggedInUser = () =>
-    <>
+    <div>
       <h1 data-testid='greeting-msg'>
         Welcome, {currentUser.username}!
       </h1>
@@ -19,10 +22,10 @@ const Greeting = ({ currentUser, logout }) => {
         onClick={() => logout()}>
         Logout
       </button>
-    </>
+    </div>
 
-  const guestUser = () =>
-    <>
+  const guestUser = () => {
+    return <div className={`${choosenIcon} != 'user' && hidden`}>
       <h1 data-testid='greeting-msg'>
         Welcome, Guest!
       </h1>
@@ -30,12 +33,12 @@ const Greeting = ({ currentUser, logout }) => {
         onClick={() => history.push('/login')}>
         Login
       </button>
-    </>
-
+    </div>
+  }
   const categories = () => {
     const categories = ['clothes', 'furniture', 'electronics', 'plants']
-    
-    return <ul className={`category-menu ${sideMenuIsVisible && ' hidden'}`}>
+
+    return <ul className={`category-menu ${!sideMenuIsVisible && ' hidden'}`}>
       {categories.map((category, index) =>
         <li className='category-item'
           key={index}
@@ -48,6 +51,9 @@ const Greeting = ({ currentUser, logout }) => {
     </ul>
   }
 
+  const handleMenuItemToggle = (e) => {
+    setIcon(e.target.parentElement.id)
+  }
   return (
     <div className='nav-container'>
       <section className='nav-top-layer'>
@@ -57,11 +63,20 @@ const Greeting = ({ currentUser, logout }) => {
         {categories()}
       </section>
       <section className='nav-bottom-layer'>
-        <SearchContainer />
-        <section>
+        <div id='search' onClick={(e) => handleMenuItemToggle(e)}>
+          <img src={Search} className='icon' />
+          <SearchContainer />
+        </div>
+        <div id='user' onClick={(e) => handleMenuItemToggle(e)} className='user-info'>
+          <img src={User} className='icon' />
           {currentUser.id ? loggedInUser() : guestUser()}
+        </div>
+        <div id='cart' onClick={(e) => handleMenuItemToggle(e)}>
+          <img src={Cart} className='icon' />
           <CartPreviewContainer />
-        </section>
+        </div>
+
+
       </section>
     </div>
   )

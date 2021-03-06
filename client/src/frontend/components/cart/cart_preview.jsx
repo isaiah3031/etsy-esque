@@ -5,7 +5,7 @@ import Cart from '../../../images/store-cart.png'
 import '../../../stylesheets/header-container.scss'
 import '../../../stylesheets/cart-dropdown.scss'
 
-const CartPreview = ({ products, cart, currentUser, fetchProduct, saveCart }) => {
+const CartPreview = ({ products, cart, currentUser, fetchProduct, saveCart, hidden }) => {
   useEffect(() => {
     if (currentUser.id) {
       saveCart(currentUser.id, cart)
@@ -20,21 +20,21 @@ const CartPreview = ({ products, cart, currentUser, fetchProduct, saveCart }) =>
 
   let total = 0;
 
+  if (hidden) return null
   return (
-    <div className='icon cart-icon'>
-      <ul className='cart-preview'>
-        {
-          Object.keys(cart).map(itemId => {
-            const item = products[itemId] || loadProduct(itemId).catch(() => null)
-            total += priceAsFloat(item) || 0
-            return <li className='cart-items'>
-              <CartItemContainer item={item} />
-            </li>
-          }
-          )}
-        <p>{total == 0 ? "No Items in Cart :(" : total}</p>
-      </ul>
-    </div>
+    <ul className='cart-preview'>
+      {
+        Object.keys(cart).map(itemId => {
+          const item = products[itemId] || loadProduct(itemId).catch(() => null)
+          total += priceAsFloat(item) || 0
+          return <li className='cart-items'>
+            <CartItemContainer item={item} />
+          </li>
+        }
+        )}
+      <p>{total == 0 ? "No Items in Cart :(" : total}</p>
+    </ul>
+
   )
 }
 

@@ -43,6 +43,8 @@ const Search = (props) => {
     }, 10);
   }
 
+  if (props.hidden) return null
+
   return <>
     <form onSubmit={() => HandleSubmit()} id="search-bar">
       <input

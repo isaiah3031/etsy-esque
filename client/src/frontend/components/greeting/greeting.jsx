@@ -13,8 +13,10 @@ const Greeting = ({ currentUser, logout }) => {
   const history = useHistory()
   const [sideMenuIsVisible, toggleSideMenu] = useState(false)
   const [choosenIcon, setIcon] = useState('none')
-  const loggedInUser = () =>
-    <div>
+
+  const loggedInUser = () => {
+    if (choosenIcon != 'user') return null
+    return <div>
       <h1 data-testid='greeting-msg'>
         Welcome, {currentUser.username}!
       </h1>
@@ -23,9 +25,11 @@ const Greeting = ({ currentUser, logout }) => {
         Logout
       </button>
     </div>
+  }
 
   const guestUser = () => {
-    return <div className={`${choosenIcon} != 'user' && hidden`}>
+    if (choosenIcon != 'user') return null
+    return <div>
       <h1 data-testid='greeting-msg'>
         Welcome, Guest!
       </h1>
@@ -52,34 +56,42 @@ const Greeting = ({ currentUser, logout }) => {
   }
 
   const handleMenuItemToggle = (e) => {
-    setIcon(e.target.parentElement.id)
+    let newSelection = e.target.parentElement.id
+    if (newSelection == choosenIcon) newSelection = 'none'
+    setIcon(newSelection)
   }
+
   return (
     <div className='nav-container'>
       <section className='nav-top-layer'>
-        <img className='icon' src={Store} onClick={() => history.push('/')} />
-        <img className='icon' src={Hamburger} onClick={() => toggleSideMenu(!sideMenuIsVisible)} />
-
+        <img className='icon' src={Store}
+          onClick={() => history.push('/')} />
+        <img className='icon'
+          src={Hamburger}
+          onClick={() => toggleSideMenu(!sideMenuIsVisible)}
+        />
         {categories()}
       </section>
       <section className='nav-bottom-layer'>
         <div id='search' onClick={(e) => handleMenuItemToggle(e)}>
           <img src={Search} className='icon' />
-          <SearchContainer />
+          <SearchContainer hidden={choosenIcon != 'search'} />
         </div>
         <div id='user' onClick={(e) => handleMenuItemToggle(e)} className='user-info'>
           <img src={User} className='icon' />
           {currentUser.id ? loggedInUser() : guestUser()}
         </div>
         <div id='cart' onClick={(e) => handleMenuItemToggle(e)}>
-          <img src={Cart} className='icon' />
-          <CartPreviewContainer />
+          <img src={Cart} className='icon' onClick={() => history.push('/cart')} />
+          <CartPreviewContainer hidden={choosenIcon != 'cart'} />
         </div>
-
-
       </section>
     </div>
   )
 }
 
 export default Greeting;
+
+// Thinking about making a separate component for the bottom half of the nav bar.
+// I need to be able to toggle between icons and auto switch to none when the user
+// clicks off.

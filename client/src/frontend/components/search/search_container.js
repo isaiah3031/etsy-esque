@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import Search from './search'
 import { fetchProductsByKeyword } from '../../util/product_api_util'
 
-const mapStateToProps = (state) => ({
-  searchTerms: state.entities.searchTerms
+const mapStateToProps = (state, ownProps) => ({
+  searchTerms: state.entities.searchTerms,
+  hidden: ownProps.hidden
 })
 
 const mapDispatchToProps = (dispatch) => ({

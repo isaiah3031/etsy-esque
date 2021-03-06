@@ -3,11 +3,12 @@ import { receiveCart, removeFromCart, saveCart } from '../../actions/cart_action
 import { fetchProduct } from '../../actions/product_actions'
 import CartPreview from './cart_preview'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   cart: state.entities.cart,
   currentUser: state.session,
   products: state.entities.products,
-  cartAnimation: state.ui.cartAnimation
+  cartAnimation: state.ui.cartAnimation,
+  hidden: ownProps.hidden
 })
 
 const mapDispatchToProps = dispatch => ({

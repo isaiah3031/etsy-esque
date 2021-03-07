@@ -48,7 +48,28 @@
 }
 
 @media only screen and (min-width: 600px) {
-  .nav-bottom-layer {
-    position: relative;
+  .nav-container {
+    .nav-top-layer {
+      border-bottom: none;
+      .category-menu {
+        width: 25vw;
+        z-index: 15;
+        font-size: 25px;
+      }
+    }
+    .nav-bottom-layer {
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+      .bottom-nav-right-sec,
+      .bottom-nav-right-sec > * {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        button {
+          margin: 7px 12px;
+        }
+      }
+    }
   }
 }

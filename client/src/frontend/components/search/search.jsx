@@ -53,9 +53,9 @@ const Search = (props) => {
         placeholder="Search"
         value={input}
       />
-      <button id='search-button' style={{
+      {/* <button id='search-button' style={{
         backgroundImage: `url(${SearchIcon})`
-      }}></button>
+      }}></button> */}
     </form>
     <DisplaySearchTerms
       results={props.searchTerms}

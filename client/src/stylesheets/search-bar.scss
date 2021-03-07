@@ -24,10 +24,20 @@
 
 @media only screen and (min-width: 600px) {
   .search-icon {
-    display: none;
   }
   #search-bar {
     position: relative;
-    width: 30vw;
+    position: inherit;
+    input {
+      position: relative;
+      display: block;
+      bottom: 10px;
+      left: -60px;
+      width: 33vw;
+    }
+  }
+  #search-button {
+    top: 0;
+    left: 0;
   }
 }

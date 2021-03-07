@@ -74,7 +74,7 @@ const Greeting = ({ currentUser, logout }) => {
       </section>
       <section className='nav-bottom-layer'>
         <div id='search' onClick={(e) => handleMenuItemToggle(e)}>
-          <img src={Search} className='icon' />
+          <img src={Search} className='search-icon' />
           <SearchContainer hidden={choosenIcon != 'search'} />
         </div>
         <div id='user' onClick={(e) => handleMenuItemToggle(e)} className='user-info'>

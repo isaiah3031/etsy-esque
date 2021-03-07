@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-bottom: 5px;
     .category-menu {
       display: hidden;
       text-align: left;
@@ -25,6 +26,7 @@
 .nav-bottom-layer {
   background-color: white;
   border-top: solid black thin;
+  padding-top: 10px;
   position: fixed;
   bottom: 0;
   display: flex;
@@ -37,4 +39,16 @@
 .icon {
   height: 40px;
   width: 40px;
+}
+
+.search-icon {
+  margin-top: 5px;
+  height: 30px;
+  width: 30px;
+}
+
+@media only screen and (min-width: 600px) {
+  .nav-bottom-layer {
+    position: relative;
+  }
 }

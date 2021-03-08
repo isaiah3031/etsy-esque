@@ -49,7 +49,10 @@
 
 @media only screen and (min-width: 600px) {
   .nav-container {
+    width: 94%;
+    margin: auto;
     .nav-top-layer {
+      margin-top: 10px;
       border-bottom: none;
       .category-menu {
         width: 25vw;
@@ -60,7 +63,7 @@
     .nav-bottom-layer {
       position: relative;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       .bottom-nav-right-sec,
       .bottom-nav-right-sec > * {
         display: flex;

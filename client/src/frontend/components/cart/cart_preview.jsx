@@ -22,7 +22,7 @@ const CartPreview = ({ products, cart, currentUser, fetchProduct, saveCart, hidd
 
   if (hidden) return null
   return (
-    <ul className='cart-preview'>
+    <ul id='cart-preview'>
       {
         Object.keys(cart).map(itemId => {
           const item = products[itemId] || loadProduct(itemId).catch(() => null)

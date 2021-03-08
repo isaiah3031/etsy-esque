@@ -1,6 +1,6 @@
 .product-display {
-  height: 350px;
-  width: 240px;
+  height: 210px;
+  width: 150px;
   position: relative;
   img {
     width: 100%;
@@ -20,8 +20,23 @@
   .plus-button {
     width: fit-content;
     position: absolute;
-    bottom: 0;
-    right: 10px;
+    top: 0;
+    right: 0;
     background-color: white;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .product-display {
+    height: 252px;
+    width: 180px;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .product-display {
+    height: 350px;
+    width: 240px;
   }
 }

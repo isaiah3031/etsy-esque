@@ -1,4 +1,4 @@
-.cart-preview {
+#cart-preview {
   display: none;
   z-index: 1;
   border: thin black solid;
@@ -6,7 +6,8 @@
   width: 400px;
   overflow-x: auto;
   position: absolute;
-  right: 10%;
+  top: 70%;
+  right: 0;
   .cart-items {
     padding: 10px 0;
     width: 100%;
@@ -32,7 +33,9 @@
 }
 
 @media only screen and (min-width: 600px) {
-  body {
-    
+  #cart:hover {
+    #cart-preview {
+      display: block;
+    }
   }
 }

@@ -78,8 +78,13 @@ const Greeting = ({ currentUser, logout }) => {
     </div>
     <div id='user' className='user-info bottom-nav-right-sec'>
       {currentUser.id ? loggedInUser(isMobile) : guestUser(isMobile)}
-      <img src={Cart} className='icon' onClick={() => history.push('/cart')} />
-      <CartPreviewContainer hidden={choosenIcon != 'cart'} />
+      <div id='cart'>
+        <img src={Cart}
+          className='icon'
+          onClick={() => history.push('/cart')}
+        />
+        <CartPreviewContainer />
+      </div>
     </div>
   </>
 

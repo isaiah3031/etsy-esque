@@ -46,16 +46,17 @@ const Search = (props) => {
   if (props.hidden) return null
 
   return <>
-    <form onSubmit={() => HandleSubmit()} id="search-bar">
+    <form onSubmit={() => HandleSubmit()} id="search">
       <input
+        className='search-bar'
         type='text'
         onChange={handleChange}
         placeholder="Search"
         value={input}
       />
-      {/* <button id='search-button' style={{
+      <button id='search-button' style={{
         backgroundImage: `url(${SearchIcon})`
-      }}></button> */}
+      }}></button>
     </form>
     <DisplaySearchTerms
       results={props.searchTerms}

@@ -90,7 +90,7 @@ const Greeting = ({ currentUser, logout }) => {
 
   const handleMenuItemToggle = (e) => {
     let newSelection = e.target.parentElement.id
-    if (newSelection == choosenIcon) newSelection = 'none'
+    if (newSelection == choosenIcon && choosenIcon != 'search') newSelection = 'none'
     setIcon(newSelection)
   }
 

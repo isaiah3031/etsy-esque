@@ -1,11 +1,15 @@
 .nav-container {
   .nav-top-layer {
+    position: fixed;
+    width: 100vw;
+    z-index: 15;
     border-bottom: black thin solid;
     background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: 5px;
+
     .category-menu {
       display: hidden;
       text-align: left;
@@ -52,6 +56,7 @@
     width: 94%;
     margin: auto;
     .nav-top-layer {
+      position: relative;
       margin-top: 10px;
       border-bottom: none;
       .category-menu {

@@ -35,14 +35,13 @@ const Search = (props) => {
   // Running props.history.go() without the timeout function doesn't work for some 
   // reason and I haven't been able to find a reason why.
   const HandleSubmit = () => {
-    const history = useHistory()
     let formattedKeywords = input.split(' ').join('%20')
     history.push(`/search/${formattedKeywords}`)
     setTimeout(() => {
-      props.history.go()
+      history.go()
     }, 10);
   }
-
+  const history = useHistory()
   if (props.hidden) return null
 
   return <>

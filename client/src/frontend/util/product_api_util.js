@@ -38,8 +38,8 @@ export const fetchProduct = (productId) =>
 	"headers": {
 		"x-rapidapi-key": REACT_APP_API_KEY,
 		"x-rapidapi-host": "target1.p.rapidapi.com"
-	}
-})
+    }
+  })
 
 export const fetchReviews = (productId) =>
   $.ajax({

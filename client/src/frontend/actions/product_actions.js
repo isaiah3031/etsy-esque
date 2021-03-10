@@ -1,5 +1,5 @@
 import * as ProductApiUtil from '../util/product_api_util'
-import {RECEIVE_PRODUCT, RECEIVE_PRODUCTS} from '../constants/action_types'
+import { RECEIVE_PRODUCT, RECEIVE_PRODUCTS } from '../constants/action_types'
 
 const receiveProduct = product => ({
   type: RECEIVE_PRODUCT,
@@ -11,12 +11,15 @@ const receiveProducts = products => ({
   products
 })
 
-export const fetchProductsByKeyword = (keyword) => dispatch => 
-  ProductApiUtil.fetchProductsByKeyword(keyword).then(result => 
-    dispatch(receiveProducts(result.products)))
-
+export const fetchProductsByKeyword = (keyword) => dispatch => {
+  debugger
+  ProductApiUtil.fetchProductsByKeyword(keyword).then(result => {
+    debugger
+    return dispatch(receiveProducts(result.products))
+  })
+}
 export const fetchProduct = (productId) => dispatch =>
-  ProductApiUtil.fetchProduct(productId).then(result =>{
+  ProductApiUtil.fetchProduct(productId).then(result => {
     let product = result.product || result.data.product
     return dispatch(receiveProduct(product))
   })

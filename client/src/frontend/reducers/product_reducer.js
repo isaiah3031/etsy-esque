@@ -1,14 +1,15 @@
-import {RECEIVE_PRODUCT, RECEIVE_PRODUCTS} from '../constants/action_types'
+import { RECEIVE_PRODUCT, RECEIVE_PRODUCTS } from '../constants/action_types'
 
-const ProductReducer = (state={}, action) => {
+const ProductReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       let productObject = {}
-      action.products.map(product => productObject[product.tcin] = product )
-      return Object.assign({}, state, productObject)
-    case RECEIVE_PRODUCT: 
-      return Object.assign({}, state, {[action.product.tcin]: action.product})
-    default: 
+      debugger
+      action.products.map(product => productObject[product.tcin] = product)
+      return productObject;
+    case RECEIVE_PRODUCT:
+      return Object.assign({}, state, { [action.product.tcin]: action.product })
+    default:
       return state;
   }
 }

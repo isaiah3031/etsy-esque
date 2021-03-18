@@ -4,6 +4,9 @@
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: thin black solid;
+  .product-info {
+    display: flex;
+  }
   img {
     height: 130px;
   }
@@ -13,14 +16,16 @@
   }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 600px) {
   .cart-and-total {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    border: solid thin black;
     width: 100%;
-    .cart-items {
+    .cart {
+      width: 50%;
+      overflow-y: auto;
+      max-height: 50vh;
     }
     .total {
       margin: 10% 20% 0 20%;

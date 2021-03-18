@@ -81,7 +81,6 @@ const Greeting = ({ currentUser, logout }) => {
       <div id='cart'>
         <img src={Cart}
           className='icon'
-          onClick={() => history.push('/cart')}
         />
         <CartPreviewContainer />
       </div>

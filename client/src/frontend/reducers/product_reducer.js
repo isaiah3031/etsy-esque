@@ -4,7 +4,6 @@ const ProductReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       let productObject = {}
-      debugger
       action.products.map(product => productObject[product.tcin] = product)
       return productObject;
     case RECEIVE_PRODUCT:

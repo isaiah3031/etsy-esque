@@ -13,6 +13,10 @@ const CartNotification = ({ notification }) => {
     }
   }
 
+  // Causes tests to fail but keeps notification sqaure from
+  // appearing when not needed.
+  if (notificationText() == '') return null
+
   return (
     <div data-testid="cart-notification" className='cart-notification'>
       <h2>{notificationText()}</h2>

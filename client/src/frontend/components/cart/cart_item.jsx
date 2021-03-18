@@ -10,7 +10,7 @@ const CartItem = ({ item }) => {
       </div>
     </>
   } catch (error) {
-    return null
+    return <p>Product not Found</p>
   }
 
 }

@@ -1,9 +1,15 @@
 .product-display {
   height: 210px;
   width: 150px;
+  padding-right: 10px;
   position: relative;
+  overflow: hidden;
+  .product-image {
+    margin: 0 auto;
+  }
   img {
     width: 100%;
+    margin: 0 auto;
   }
   .product-info {
     text-align: left;
@@ -20,8 +26,8 @@
   .plus-button {
     width: fit-content;
     position: absolute;
-    top: 0;
-    right: 0;
+    bottom: 40px;
+    right: 15px;
     background-color: white;
   }
 }

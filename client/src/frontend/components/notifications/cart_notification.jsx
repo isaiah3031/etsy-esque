@@ -13,7 +13,7 @@ const CartNotification = ({ notification }) => {
     }
   }
 
-  // Causes tests to fail but keeps notification sqaure from
+  // Causes tests to fail but keeps notification square from
   // appearing when not needed.
   if (notificationText() == '') return null
 

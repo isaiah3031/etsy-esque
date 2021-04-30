@@ -5,13 +5,14 @@
   align-items: flex-start;
   border-bottom: thin black solid;
   .product-info {
+    margin-top: 17px;
     display: flex;
+    flex-direction: column;
   }
   img {
     height: 130px;
   }
-  input[type="button"],
-  p {
+  input[type="button"] {
     margin-top: 50px;
   }
 }
@@ -21,7 +22,8 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 100%;
+    width: 93%;
+    margin: 0 auto;
     .cart {
       width: 50%;
       overflow-y: auto;
